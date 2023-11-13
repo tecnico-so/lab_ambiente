@@ -4,14 +4,37 @@
 
 ## Definição do ambiente laboratorial
 
-O ambiente onde são testados os exercícios e onde serão depois avaliados os projetos, em caso de dúvidas, serão os laboratórios das aulas.
+O ambiente onde são testados os exercícios e onde serão depois avaliados os projetos, em caso de dúvidas, serão os amibentes Linux nos laboratórios das aulas.
 
-- Ubuntu Linux 20.04 LTS (_Long Term Support_)
-  - [Rede das Novas Licenciaturas - Alameda](https://rnl.tecnico.ulisboa.pt/laboratorios/software/)
-  - [Núcleo de Informática do Taguspark](http://groups.tecnico.ulisboa.pt/lti-tagus/software/)
+- [Rede das Novas Licenciaturas - Alameda](https://rnl.tecnico.ulisboa.pt/laboratorios/software/)
+- [Núcleo de Informática do Taguspark](http://groups.tecnico.ulisboa.pt/lti-tagus/software/)
 
 Dito isto, a generalidade dos sistemas Linux deverão correr corretamente os exercícios e permitir o desenvolvimento do projeto.  
 No entanto, é **fortemente recomendado** que o **código**, sobretudo do **projeto**, seja **testado regularmente no ambiente de referência**.
+
+### Acesso remoto ao ambiente de referência
+
+Os computadores dos labs da Alameda podem ser acedidos de forma remota com SSH (_Secure Shell_), no entanto, não diretamente: é preciso antes aceder a uma máquina com acesso aos PCs dos labs.
+
+Para este efeito pode-se usar o [cluster da RNL](https://rnl.tecnico.ulisboa.pt/servicos/cluster/), a autenticação é feita com o IST ID e password do Fénix. A home de cada utilizador (directoria presente quando se faz login) consiste na sua área pessoal do AFS disponibilizada pela DSI. É necessário portanto que o serviço AFS esteja ativo no [selfservice da DSI](https://selfservice.dsi.tecnico.ulisboa.pt/).
+
+```bash
+ssh ist1XXXXXX@cluster.tecnico.ulisboa.pt
+```
+
+Depois de entrar na shell do cluster, é possível aceder aos computadores dos labs por SSH. O computador precisa de estar ligado e no ambiente Linux. O seguinte comando lista os computadores neste estado:
+
+```bash
+# Correr no cluster
+sinfo -Nr
+```
+
+Qualquer um dos computadores listados pode ser usado:
+
+```bash
+# Correr no cluster após substituir X e Y
+ssh labXpY
+```
 
 ----
 
@@ -24,9 +47,28 @@ Em todo os outros ambientes, o utilizador está por conta própria.
 
 Os docentes tentarão sempre ajudar a resolver problemas, mas não têm obrigação de o fazer, por limitações de tempo e esforço.
 
+### _Windows Subsystem for Linux_ (WSL)
+
+O subsistema de Linux para Windows (_Windows Subsystem for Linux_ -- WSL) permite correr um Linux dentro do Windows de forma mais eficiente do que usando uma máquina virtual.
+Facilita também a partilha de ficheiros entre o Windows e o Linux.
+
+Sugere-se a consulta de uma [explicação do WSL](https://learn.microsoft.com/en-us/windows/wsl/about) e das [instruções para a instalação](https://learn.microsoft.com/en-us/windows/wsl/install).
+Existem também [instruções focadas no Ubuntu](https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10).
+
+### MacOS X
+
+O MacOS X é também um sistema Unix, mas não é um sistema Linux.
+Existem diferenças importantes na estrutura interna do sistema e no licenciamento.  
+**Importante:** a nível da programação de sistema, poderão surgir algumas diferenças, por exemplo, na gestão dos _signals_.
+Tentaremos confirmar estas incompatibilidades ao longo do período de aulas.  
+**Relembramos a necessidade de testar regularmente no ambiente de referência: o Linux dos laboratórios.**
+
+Para permitir o desenvolvimento será necessário instalar as ferramentas que são incluidas no [XCode](https://developer.apple.com/xcode/).  
+Pode também ser útil ter o [Homebrew](https://www.makeuseof.com/tag/install-mac-software-terminal-homebrew/) para instalar mais ferramentas, se necessário.
+
 ### Acesso remoto ao Sigma
 
-O Técnico disponibiliza um serviço de [_Unix shell_](https://si.tecnico.ulisboa.pt/en/servicos/servidores-e-dados/unix-shell/), que é suportados pelas [máquinas Sigma](https://si.tecnico.ulisboa.pt/en/servicos/servidores-e-dados/unix-shell/acesso-ao-cluster-sigma/) que podem ser usadas remotamente com SSH (_Secure Shell_).
+O Técnico disponibiliza um serviço de [_Unix shell_](https://si.tecnico.ulisboa.pt/en/servicos/servidores-e-dados/unix-shell/), que é suportados pelas [máquinas Sigma](https://si.tecnico.ulisboa.pt/en/servicos/servidores-e-dados/unix-shell/acesso-ao-cluster-sigma/) que podem ser usadas remotamente com SSH.
 
 ### _Dual Boot_
 
@@ -47,25 +89,6 @@ Será necessário procurar instruções para aceder à UEFI ou BIOS no seu model
 
 A memória USB deverá oferecer tempos de acesso rápidos, em especial no tempo de escrita, para que o desempenho seja bom.
 Tenha em atenção que a memória USB a usar irá sofrer um grande desgaste de escritas, pelo que verá o seu tempo de vida substancialmente encurtado.
-
-### _Windows Subsystem for Linux_ (WSL)
-
-O subsistema de Linux para Windows (_Windows Subsystem for Linux_ -- WSL) permite correr um Linux dentro do Windows de forma mais eficiente do que usando uma máquina virtual.
-Facilita também a partilha de ficheiros entre o Windows e o Linux.
-
-Sugere-se a consulta de uma [explicação do WSL](https://learn.microsoft.com/en-us/windows/wsl/about) e das [instruções para a instalação](https://learn.microsoft.com/en-us/windows/wsl/install).
-Existem também [instruções focadas no Ubuntu](https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10).
-
-### MacOS X
-
-O MacOS X é também um sistema Unix, mas não é um sistema Linux.
-Existem diferenças importantes na estrutura interna do sistema e no licenciamento.  
-**Importante:** a nível da programação de sistema, poderão surgir algumas diferenças, por exemplo, na gestão dos _signals_.
-Tentaremos confirmar estas incompatibilidades ao longo do período de aulas.  
-**Relembramos a necessidade de testar regularmente no ambiente de referência: o Linux dos laboratórios.**
-
-Para permitir o desenvolvimento será necessário instalar as ferramentas que são incluidas no [XCode](https://developer.apple.com/xcode/).  
-Pode também ser útil ter o [Homebrew](https://www.makeuseof.com/tag/install-mac-software-terminal-homebrew/) para instalar mais ferramentas, se necessário.
 
 ### Máquina virtual
 
