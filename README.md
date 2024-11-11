@@ -4,7 +4,7 @@
 
 ## Definição do ambiente laboratorial
 
-O ambiente onde são testados os exercícios e onde serão depois avaliados os projetos, em caso de dúvidas, serão os ambientes Linux nos laboratórios das aulas.
+O ambiente onde são testados os exercícios, em caso de dúvidas, serão os ambientes Linux nos laboratórios das aulas.
 
 - [Rede das Novas Licenciaturas - Alameda](https://rnl.tecnico.ulisboa.pt/laboratorios/software/)
 - [Núcleo de Informática do Taguspark](http://groups.tecnico.ulisboa.pt/lti-tagus/software/)
